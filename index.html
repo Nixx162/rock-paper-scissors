@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+    function getComputerChoice() {
+      return Math.floor(Math.random()*3);
+    }
+
+    function playRound(player, comp) {
+      if (player == comp) {
+        return "Draw! You both chose the same thing!"
+      } else if (player == 0) {
+        if (comp == 1) {
+          return "You've lost! Paper beats rock!"
+        } else {
+          return "You've won! Rock beats scissors"
+        }
+      } else if (player == 1) {
+        if (comp == 0) {  
+          return "You've won! Paper beats rock!"
+        } else {
+          return "You've lost! Scissors beats paper"
+        }
+      } else if (player == 2) {
+        if (comp == 0) {  
+          return "You've lost! Rock beats scissors!"
+        } else {
+          return "You've won! Scissors beats paper"
+        }
+      }
+    }
+
+    let player, input, pscore=0, cscore=0;
+
+    while (true) {
+      while (true) {
+        input = prompt("Please choose either rock, paper, or scissors!");
+        if (input.toLowerCase() == "rock") {
+          player = 0;  
+          break; 
+        } else if (input.toLowerCase() == "paper") {
+          player = 1;
+          break;
+        } else if (input.toLowerCase() == "scissors") {
+          player = 2;
+          break;
+        }
+        alert("Error: your input cannot be recognized! Please check for typos and reenter your choice");
+      }
+      alert(playRound(player, getComputerChoice()));
+    }
+  </script>
+</body>
+</html>
