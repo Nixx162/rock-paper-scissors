@@ -3,56 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <title>Page Title</title>
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <script>
-    function getComputerChoice() {
-      return Math.floor(Math.random()*3);
-    }
+  <div class="scoreboard">
+    <div class="player">
+      <div class="score">0</div>
+      <div class="side">Player</div>
+    </div>
+    <div class="computer">
+      <div class="score">0</div>
+      <div class="side">Computer</div>
+    </div>
+  </div> 
 
-    function playRound(player, comp) {
-      if (player == comp) {
-        return "Draw! You both chose the same thing!"
-      } else if (player == 0) {
-        if (comp == 1) {
-          return "You've lost! Paper beats rock!"
-        } else {
-          return "You've won! Rock beats scissors"
-        }
-      } else if (player == 1) {
-        if (comp == 0) {  
-          return "You've won! Paper beats rock!"
-        } else {
-          return "You've lost! Scissors beats paper"
-        }
-      } else if (player == 2) {
-        if (comp == 0) {  
-          return "You've lost! Rock beats scissors!"
-        } else {
-          return "You've won! Scissors beats paper"
-        }
-      }
-    }
+  <div class="gameboard">
+    <div class="select">
+      <button><img src="img/rock.png" class="rock"></button>
+    </div>
+  
+    <div class="select">   
+      <button><img src="img/paper.png" class="paper"></button>
+    </div>
+  
+    <div class="select">   
+      <button><img src="img/scissors.png" class="scissors"></button>
+    </div>
+  </div>
 
-    let player, input, pscore=0, cscore=0;
+  <div class="result">
+    <div class="choices">
+      <div class="choice">
+        <div style="font-size: 40px; text-align: center;">You chose:</div>
+        <div id="pchoice"></div>
+      </div>
 
-    while (true) {
-      while (true) {
-        input = prompt("Please choose either rock, paper, or scissors!");
-        if (input.toLowerCase() == "rock") {
-          player = 0;  
-          break; 
-        } else if (input.toLowerCase() == "paper") {
-          player = 1;
-          break;
-        } else if (input.toLowerCase() == "scissors") {
-          player = 2;
-          break;
-        }
-        alert("Error: your input cannot be recognized! Please check for typos and reenter your choice");
-      }
-      alert(playRound(player, getComputerChoice()));
-    }
-  </script>
+      <div class="choice">
+        <div style="font-size: 40px; text-align: center;">Computer chose:</div>
+        <div id="cchoice"></div>
+      </div> 
+    </div>
+    <div id="desc"></div>
+  </div>
 </body>
 </html>
